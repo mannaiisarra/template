@@ -29,7 +29,7 @@ export class UserService {
       phone,
       adress
       
-    }, httpOptions);
+    });
   }
   removeUser(id: string): Observable<Dataresponse<Users>> {
     return this.http.delete<Dataresponse<Users>>(API_URL + '/deleteUser/' + id);

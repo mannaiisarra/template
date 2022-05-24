@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  base_picture:"http://localhost:8082/api/auth/files/"
 };
