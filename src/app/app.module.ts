@@ -9,6 +9,11 @@ import { LoginComponent } from './login/login.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProfileComponent } from './home/profile/profile.component';
+import { FormateurApprenantComponent } from './home/formateur-apprenant/formateur-apprenant.component';
+import { EditComponent } from './home/formateur-apprenant/edit/edit.component';
+import { AddComponent } from './home/formateur-apprenant/add/add.component';
+import { FormationComponent } from './home/formation/formation.component';
+import { DetailComponent } from './home/formation/detail/detail.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +22,12 @@ import { ProfileComponent } from './home/profile/profile.component';
     HeaderComponent,
     SidebarComponent,
     LoginComponent,
-    ProfileComponent
+    ProfileComponent,
+    FormateurApprenantComponent,
+    EditComponent,
+    AddComponent,
+    FormationComponent,
+    DetailComponent
   ],
   imports: [
     BrowserModule,

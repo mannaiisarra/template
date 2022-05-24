@@ -4,6 +4,10 @@ import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './home/dashboard/dashboard.component';
 import { ProfileComponent } from './home/profile/profile.component';
+import { FormateurApprenantComponent } from './home/formateur-apprenant/formateur-apprenant.component';
+import { AddComponent } from './home/formateur-apprenant/add/add.component';
+import { FormationComponent } from './home/formation/formation.component';
+import { DetailComponent } from './home/formation/detail/detail.component';
 
 const routes: Routes = [
     {path:"login",component:LoginComponent},
@@ -11,6 +15,12 @@ const routes: Routes = [
     {path:"home",component:DashboardComponent,children:[
 
          {path:"profile",component:ProfileComponent},
+         {path:"formateur_Apprenant",component:FormateurApprenantComponent},
+         {path:"formateur_Apprenant/:id",component:FormateurApprenantComponent},
+         {path:"add",component:AddComponent},
+         {path:"formation",component:FormationComponent},
+         {path:"detailformation/:id",component:DetailComponent}
+
        
        ]},
     

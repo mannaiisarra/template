@@ -60,7 +60,8 @@ export class ProfileComponent implements OnInit {
       email: ['', [Validators.required]],
       phone: ['', [Validators.required]],
       adress: ['', [Validators.required]],
-      password: ['', [Validators.required]],
+      //password: ['', [Validators.required]],
+     // role: [this.currentUser.roles[0], [Validators.required]],
       
    
     });
@@ -73,7 +74,7 @@ export class ProfileComponent implements OnInit {
          email: this.user.email,
          phone: this.user.phone,
          adress: this.user.adress,
-         //password: this.user.password,
+        // role: this.user.roles,
         
 
      })

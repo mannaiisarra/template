@@ -1,0 +1,166 @@
+<section class="content">
+
+    
+    <div class="row">
+      <div class="col-12">
+          <div class="box pull-up">
+              <div class="box-body bg-img bg-primary-light">
+                  <div class="d-lg-flex align-items-center justify-content-between">
+                      <div class="d-lg-flex align-items-center mb-30 mb-xl-0 w-p100">
+                          <img src="https://eduadmin-template.multipurposethemes.com/bs4/images/svg-icon/color-svg/custom-14.svg" class="img-fluid max-w-250" alt="" />
+                          <div class="ml-30">
+                              <h2 class="mb-10">Take Advance Courses to Achive Your Goal !</h2>
+                              <p class="mb-0 text-fade font-size-18">It is a long established fact that a reader will be distracted <br>of a page when looking at its layout. </p>
+                          </div>
+                      </div>
+                      
+                  </div>							
+              </div>
+          </div>
+      </div>
+        
+     
+      
+     
+        
+    </div>
+    <div class="row fx-element-overlay">
+        <div class="col-12">														
+            <div class="box no-shadow mb-0 bg-transparent">
+                <div class="box-header no-border px-1">
+                    <h4 class="box-title">Training</h4>	
+                    <ul class="box-controls pull-right d-md-flex d-none">
+                      <li>
+                        <a href="javascript:void(0)" data-toggle="modal" data-target="#myModal" class="btn btn-success mt-10 d-block text-center">+ Add New Contact</a>
+                    
+                      </li>
+                     
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <br><br><br> <br>
+  	
+       
+
+       
+   
+
+            
+      <div class="col-lg-3 col-md-8 col-11"  *ngFor="let item of formations; let i=index">
+        <div class="card" >
+            <div class="fx-card-item">
+                <div class="fx-card-avatar fx-overlay-1"> <img src="{{ base_picture+item.photo }}" alt="user" class="bbrr-0 bblr-0">
+                  <div class="fx-overlay">
+                    <ul class="fx-info">
+                      <li><a class="btn btn-danger no-border"  [routerLink]="['/home/detailformation',item.id]" href="javascript:void(0);">View More</a></li>
+                    </ul>
+                  </div>
+                </div>
+              <div class="card-body">
+                <span class="badge badge-primary">Online</span>	
+                <span class="badge badge-primary-light">English</span>
+                <span class="badge badge-primary-light">Spanish</span>													
+                <div class="cour-stac d-flex align-items-center text-fade mt-20">
+                  <p>Start Date {{ item.date_deDebut | date: "yyyy-MM-dd" }}</p>
+                  <p class="lt-sp">|</p>
+                  <p>Johen doe</p>
+                </div>
+              <h4 class="card-title justify-content-between d-flex align-items-center">{{ item.titre }}</h4>
+              <p class="card-text">{{ item.description }}</p>
+              </div>
+          <div class="card-footer justify-content-between d-flex align-items-center">
+            <div class="d-flex font-size-18 font-weight-600">                       <img class="avatar avatar-14 rounded-circle bg-warning-light" src="assets/images/avatar/2.jpg" alt="...">
+                <img class="avatar avatar-14 rounded-circle bg-warning-light" src="assets/images/avatar/2.jpg" alt="...">
+            </div>
+            <span>
+                <a href="javascript:void(0)"  (click)="removeFormation(item.id)"  class="text-danger" data-original-title="Delete" data-toggle="tooltip">
+                    <i class="ti-trash"></i>
+                  </a>
+            </span>
+          </div>
+        </div>
+      </div>
+     
+    </div>
+
+
+
+    </div>
+  </section>
+
+
+<!-- /.content -->
+
+<!-- Popup Model Plase Here -->
+<div id="myModal" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="myModalLabel">Add Users</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+      </div>
+      <div class="modal-body">
+        <form class="form-horizontal"  name="form" [formGroup]="formFormation"> 
+
+          <div class="form-group">
+            <label class="col-md-12">Name</label>
+            <div class="col-md-12">
+              <input type="text" class="form-control" placeholder="Titre"  name="titre"
+              formControlName="titre">
+            </div>
+            <label class="col-md-12">Description</label>
+            <div class="col-md-12">
+              <input type="text" class="form-control" placeholder="Titre"  name="titre"
+              formControlName="description">
+            </div>
+            
+            <label class="col-md-12">Photo</label>
+            <div class="col-md-12">
+            <input class="form-control" type="file" id="formFile" type="file"   multiple (change)="handleFileInput($event)" />
+
+            </div>
+            <label class="col-md-12">date_deDebut</label>
+            <div class="col-md-12">
+
+
+              
+              
+              <input class="form-control" type="date"  formControlName="date_deDebut">
+
+             
+            </div>
+            <label class="col-md-12">date_de fin</label>
+            <div class="col-md-12">
+
+
+              
+              
+              <input class="form-control" type="date"  formControlName="date_defin">
+
+             
+            </div>
+            
+            
+            
+            
+          </div>
+        
+          <div class="modal-footer">
+            <button type="button" (click)="onSubmit()" class="btn btn-success" >Add</button>
+          </div>
+        </form>
+      </div>
+     
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>
+<!-- /Popup Model Plase Here -->
+
+
+
+

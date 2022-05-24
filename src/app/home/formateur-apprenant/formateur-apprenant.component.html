@@ -1,0 +1,128 @@
+
+      <!-- Content Header (Page header) -->
+      <div class="content-header">
+        <div class="d-flex align-items-center">
+            <div class="mr-auto">
+                <h3 class="page-title">List of trainers and learners</h3>
+                <div class="d-inline-block align-items-center">
+                    <nav>
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="#"><i class="mdi mdi-home-outline"></i></a></li>
+                            <li class="breadcrumb-item" aria-current="page"></li>
+                            <li class="breadcrumb-item active" aria-current="page">List</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+              
+   
+<section class="content">
+
+    <div class="row">
+<div class="col-3"></div>
+<div class="col-6"></div>
+<div class="col-3"><div class="box-body">
+    <div class="clearfix"> 
+        <button type="button" [routerLink]="['/home/add']" class="waves-effect waves-light btn-block btn btn-primary"><i class="fa fa-plus mr-15"></i> Add Learners | trainers</button>
+
+    </div>
+</div>
+</div>
+
+
+
+    </div>
+    <div class="row">
+        <div class="col-12">
+          <div class="box">
+            <div class="box-body">
+              <div class="table-responsive">
+                  <table id="productorder" class="table table-hover no-wrap product-order" data-page-size="">
+                      <thead class="bg-success">
+                          <tr>
+                               <th></th>
+                               <th>Username</th>
+                               <th>Email </th>
+                               <th>Phone</th>
+                               <th>Adress</th>
+                               <th>Image</th>
+                               <th>Role</th>
+                               
+                              
+                               <th>Actions</th>
+                          </tr>
+                      </thead>
+                      <tbody *ngFor="let item of users; let i=index">
+                          <tr>
+                              <td>{{i}}</td>
+                              <td>{{item.username}}</td>
+                              <td>{{item.email}}</td>
+                              <td>{{item.phone}}</td>
+                              <td>{{item.adress}}</td>
+                              <td><img src="{{ base_picture+item.photo }}" alt="product" width="80" class="avatar avatar-lg rounded10"></td>
+
+                              <td  *ngFor="let rol of item.roles"><span class="badge badge-pill badge-pill">{{rol.name}}</span></td>
+                              <td><a href="javascript:void(0)" data-toggle="modal" [routerLink]="['/home/formateur_Apprenant',item.id]" data-target="#myModal"   class="text-info mr-10"  data-original-title="Edit">
+                                      <i class="ti-marker-alt"></i>
+
+                                  </a> 
+                                  <a href="javascript:void(0)" (click)="removeUser(item.id)" class="text-danger" data-original-title="Delete" data-toggle="tooltip">
+                                      <i class="ti-trash"></i>
+                                  </a>
+                              </td>
+                          </tr>
+                         
+
+                      </tbody>						
+                  </table>
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>
+
+  </section>
+  <div id="myModal" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="myModalLabel">Edit Info</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" [formGroup]="formUser" (ngSubmit)="EditUsers()">
+                    <div class="form-group">
+                        <label class="col-md-12">Name</label>
+                        <div class="col-md-12">
+                            <input type="text" class="form-control" placeholder="Name"  formControlName="username">
+                        </div>
+                        <label class="col-md-12">Email</label>
+                        <div class="col-md-12">
+                            <input type="email" class="form-control" placeholder="Email"  formControlName="email">
+                        </div>
+                        <label class="col-md-12">Phone</label>
+                        <div class="col-md-12">
+                            <input type="tel" class="form-control" placeholder="Phone"  formControlName="phone">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-12">Address</label>
+                        <div class="col-md-12">
+                            <textarea class="form-control" placeholder=""  formControlName="username"></textarea>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" data-dismiss="modal">Add</button>
+                <button type="button" class="btn btn-default float-right" data-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+ 
