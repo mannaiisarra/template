@@ -43,20 +43,44 @@ export class ProfileComponent implements OnInit {
     //  this.formCategory.get("password")?.setValue(res.data?.password)
     //  this.photo=this.base_picture+res.data?.photo
    
-    this.formUser = this.fb.group({
-      username: [this.currentUser.username, [Validators.required]],
-      email: [this.currentUser.email, [Validators.required]],
-      phone: [this.currentUser.phone, [Validators.required]],
-      adress: [this.currentUser.adress, [Validators.required]],
-      role: [this.currentUser.roles[0], [Validators.required]],
+    // this.formUser = this.fb.group({
+    //   username: [this.currentUser.username, [Validators.required]],
+    //   email: [this.currentUser.email, [Validators.required]],
+    //   phone: [this.currentUser.phone, [Validators.required]],
+    //   adress: [this.currentUser.adress, [Validators.required]],
+    //   role: [this.currentUser.roles[0], [Validators.required]],
       //photo: ['', [Validators.required]],
       
    
   
-    })
+    // })
+
+    this.formUser = this.fb.group({
+      username: ['', [Validators.required]],
+      email: ['', [Validators.required]],
+      phone: ['', [Validators.required]],
+      adress: ['', [Validators.required]],
+      password: ['', [Validators.required]],
+      
+   
+    });
+    this.userService.getUser(this.currentUser.id).subscribe(res=>{
+      console.log("id from get by id  ",res.data);
+      this.user = res.data;
+
+       this.formUser.patchValue({
+         username: this.user.username,
+         email: this.user.email,
+         phone: this.user.phone,
+         adress: this.user.adress,
+         //password: this.user.password,
+        
+
+     })
  
   
-  }
+  })
+}
 
   EditUsers() {
     console.log('Done ', this.formUser.value);
