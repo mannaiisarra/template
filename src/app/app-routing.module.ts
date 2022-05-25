@@ -16,7 +16,7 @@ const routes: Routes = [
 
          {path:"profile",component:ProfileComponent},
          {path:"formateur_Apprenant",component:FormateurApprenantComponent},
-         {path:"formateur_Apprenant/:id",component:FormateurApprenantComponent},
+         {path:"formateur_App/:id",component:FormateurApprenantComponent},
          {path:"add",component:AddComponent},
          {path:"formation",component:FormationComponent},
          {path:"detailformation/:id",component:DetailComponent}

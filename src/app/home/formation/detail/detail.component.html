@@ -43,53 +43,50 @@
                 <div class="tab-content">
                     <div id="navpills-1" class="tab-pane active">						
                       <div class="box-body">
-                        <form action="#">
-                          <div class="form-body">
-                            <div class="row">
-                              <div class="col-md-6">
-                                <div class="form-group">
-                                  <label class="font-weight-700 font-size-16">Titre</label>
-                                  <input type="text" class="form-control" placeholder="Product Name">
-                                  <label class="font-weight-700 font-size-16">Description</label>
-                                  <input type="text" class="form-control" placeholder="Product Name">
-                                  <label class="font-weight-700 font-size-16">Date de debut</label>
-                                  <input type="date" class="form-control" placeholder="Product Name">
-                                  <label class="font-weight-700 font-size-16">Date de fin</label>
-                                  <input type="date" class="form-control" placeholder="Product Name">
-                                </div>
-                              </div>
-                              <!--/span-->
-                            
-                              <div class="col-md-6">
-                                <br>   <br> 
-                                <div class="product-img text-left">
-                                  
-                                  <div class="btn btn-info mb-20">
-                                    <span>Upload Anonther Image</span>
-                                      <input type="file" class="upload"> 
-                                      <img src="assets/images/product/product-9.png" alt="">
+                        <div class="col-12">      
+                          <!-- Default box -->
+                          <div class="box">
+                          <div class="box-header with-border">
+                            <h4 class="box-title">EDITE FORMATION</h4>
+                          </div>
+                          <div class="box-body">
+                            <form  [formGroup]="formFormation" (ngSubmit)="EditFormation()">
+                            <div id="slimtest3">
+                              <div class="row">
+                                <div class="col-md-6">
+                                  <div class="p-20">
+                                    <div class="box-body form-element">
+                                      <input class="form-control input-lg" type="text" placeholder=".input-lg"  formControlName="titre">
+                                      <br><br>
+                                      <input class="form-control" type="text" placeholder="Default input" formControlName="description">
+                                      <br><br>
+                                      <input class="form-control input-sm" type="date" placeholder=".input-sm" formControlName="date_deDebut">
+                                      <br><br>
+                                      <input class="form-control input-sm" type="date" placeholder=".input-sm" formControlName="date_deDebut">
+                                    
+                                    </div>
                                   </div>
-                                  
                                 </div>
+                                <div class="col-md-5">
+                                  <span>Upload Anonther Image :</span>
+                                    <br>
+                                  <input class="form-control" type="file" id="formFile" formControlName="photo"  type="file"   multiple (change)="handleFileInput($event)" />
+<br>
+                                  
+                                  <img [src]="photo" class="img-responsive" alt="" /></div>
                               </div>
-                              <!--/span-->
                             </div>
-                         
-                            <!--/row-->
-                            <div class="row">
-                             
-                              <!--/span-->
-                           
-                              <!--/span-->
-                             
+                            <div class="form-actions mt-25">
+                              <button type="submit" class="btn btn-success">  Save</button>
+  
+                              <button type="button" class="btn btn-danger">Cancel</button>
                             </div>
-                          
+                          </form>
                           </div>
-                          <div class="form-actions mt-10">
-                            <button type="submit" class="btn btn-primary"> <i class="fa fa-check"></i> Save</button>
-                            <button type="button" class="btn btn-danger">Cancel</button>
+                          <!-- /.box-body -->
                           </div>
-                        </form>
+                          <!-- /.box -->		  
+                        </div>
                         </div>
                       
                   </div>
@@ -98,7 +95,9 @@
                         <div class="tab-pane animation-fade" id="category-2" role="tabpanel">
                           <div class="panel-group panel-group-simple panel-group-continuous" id="accordion"
                           aria-multiselectable="true" role="tablist">
-                            <!-- Question 5 -->
+                          
+                          <button type="button" class="waves-effect waves-light btn btn-rounded btn-primary-light mb-5"> <i class="ti-plus"></i> Primary</button>
+                          <!-- Question 5 -->
                             <div class="panel">
                               <div class="panel-heading" id="question-5" role="tab">
                                 <a class="panel-title" aria-controls="answer-5" aria-expanded="true" data-toggle="collapse"
@@ -272,7 +271,7 @@
         </div>  
       </div>
       <!-- /.row -->
-
+      
     </section>
     <!-- /.content -->	  
 

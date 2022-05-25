@@ -105,12 +105,12 @@
              <h3 class="widget-user-username">Role:</h3>
            
              <ul>
-               <li *ngFor="let role of currentUser.roles">
+               <li *ngFor="let role of user.roles">
                  {{ role }}
                </li>
              </ul>                  </div>
            <div class="widget-user-image">
-             <img class="rounded-circle" src="{{ base_picture+currentUser.photo }}" alt="User Avatar">
+             <img class="rounded-circle" src="{{ base_picture+user.photo }}" alt="User Avatar">
            </div>
            <div class="box-footer">
              <div class="row">
@@ -122,7 +122,7 @@
                <div class="col-sm-4 br-1 bl-1">
                  <div class="description-block">
                    <h5 class="description-header">Username</h5>
-                   <span class="description-text">{{ currentUser.username }}</span>
+                   <span class="description-text">{{ user.username }}</span>
                  </div>
                  <!-- /.description-block -->
                </div>
@@ -141,9 +141,9 @@
              <div class="row">
                <div class="col-12">
                    <div>
-                       <p>Email :<span class="text-gray pl-10">  {{ currentUser.email }}</span> </p>
-                       <p>Phone :<span class="text-gray pl-10">{{ currentUser.adress }}</span></p>
-                       <p>Address :<span class="text-gray pl-10">{{ currentUser.adress }}</span></p>
+                       <p>Email :<span class="text-gray pl-10">  {{ user.email }}</span> </p>
+                       <p>Phone :<span class="text-gray pl-10">{{ user.adress }}</span></p>
+                       <p>Address :<span class="text-gray pl-10">{{ user.adress }}</span></p>
 
                    </div>
                </div>

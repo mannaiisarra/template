@@ -65,7 +65,7 @@
                               <td><img src="{{ base_picture+item.photo }}" alt="product" width="80" class="avatar avatar-lg rounded10"></td>
 
                               <td  *ngFor="let rol of item.roles"><span class="badge badge-pill badge-pill">{{rol.name}}</span></td>
-                              <td><a href="javascript:void(0)" data-toggle="modal" [routerLink]="['/home/formateur_Apprenant',item.id]" data-target="#myModal"   class="text-info mr-10"  data-original-title="Edit">
+                              <td><a href="javascript:void(0)" data-toggle="modal" [routerLink]="['/home/formateur_App',item.id]" data-target="#myModal"   class="text-info mr-10"  data-original-title="Edit">
                                       <i class="ti-marker-alt"></i>
 
                                   </a> 
@@ -93,33 +93,34 @@
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
             </div>
             <div class="modal-body">
-                <form class="form-horizontal" [formGroup]="formUser" (ngSubmit)="EditUsers()">
+                <form class="form-horizontal" [formGroup]="formUser" >
                     <div class="form-group">
                         <label class="col-md-12">Name</label>
                         <div class="col-md-12">
-                            <input type="text" class="form-control" placeholder="Name"  formControlName="username">
+                            <input type="text" class="form-control" placeholder=""  formControlName="username">
                         </div>
                         <label class="col-md-12">Email</label>
                         <div class="col-md-12">
-                            <input type="email" class="form-control" placeholder="Email"  formControlName="email">
+                            <input type="email" class="form-control" placeholder=""  formControlName="email">
                         </div>
                         <label class="col-md-12">Phone</label>
                         <div class="col-md-12">
-                            <input type="tel" class="form-control" placeholder="Phone"  formControlName="phone">
+                            <input type="tel" class="form-control" placeholder=""  formControlName="phone">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-md-12">Address</label>
                         <div class="col-md-12">
-                            <textarea class="form-control" placeholder=""  formControlName="username"></textarea>
+                            <textarea class="form-control" placeholder=""  formControlName="adress"></textarea>
                         </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-success" data-dismiss="modal" (click)="EditUsers()" >Add</button>
+                        <button type="button" class="btn btn-default float-right" data-dismiss="modal">Cancel</button>
                     </div>
                 </form>
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-success" data-dismiss="modal">Add</button>
-                <button type="button" class="btn btn-default float-right" data-dismiss="modal">Cancel</button>
-            </div>
+           
         </div>
         <!-- /.modal-content -->
     </div>

@@ -30,7 +30,7 @@ export class FormateurApprenantComponent implements OnInit {
       email: ['', [Validators.required]],
       phone: ['', [Validators.required]],
       adress: ['', [Validators.required]],
-      password: ['', [Validators.required]],
+      //password: ['', [Validators.required]],
       
    
     });
@@ -99,6 +99,7 @@ export class FormateurApprenantComponent implements OnInit {
           footer: '<a href="">Why do I have this issue?</a>',
         });
       }
+      this.router.navigateByUrl('/home/formateur_Apprenant')
     });
 
   }

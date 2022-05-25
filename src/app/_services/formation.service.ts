@@ -25,7 +25,7 @@ export class FormationService {
  getFormationbyId(id:any): Observable<DataResponseObject<Formation>> {
    return this.http.get<DataResponseObject<Formation>>(API_URL+'/findById/'+id);
  }
- updateUser(id: string, data: any): Observable<DataResponseObject<Formation>> {
+ updateformation(id: string, data: any): Observable<DataResponseObject<Formation>> {
    return this.http.put<DataResponseObject<Formation>>(API_URL +'/updateUser/'+ id, data);
  }
 

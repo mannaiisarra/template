@@ -61,14 +61,21 @@ export class ProfileComponent implements OnInit {
       phone: ['', [Validators.required]],
       adress: ['', [Validators.required]],
       //password: ['', [Validators.required]],
-     // role: [this.currentUser.roles[0], [Validators.required]],
+      role: [this.currentUser.roles[0], [Validators.required]],
       
    
     });
-    this.userService.getUser(this.currentUser.id).subscribe(res=>{
+
+    this.getUserById();
+
+ 
+}
+
+  getUserById(){
+        this.userService.getUser(this.currentUser.id).subscribe(res=>{
       console.log("id from get by id  ",res.data);
       this.user = res.data;
-
+      console.log("id from get by id  ",this.user.username);
        this.formUser.patchValue({
          username: this.user.username,
          email: this.user.email,
@@ -81,18 +88,23 @@ export class ProfileComponent implements OnInit {
  
   
   })
-}
+  }
 
   EditUsers() {
     console.log('Done ', this.formUser.value);
 
 
     this.userService.updateUser(this.currentUser.id,this.formUser.value).subscribe((res) => {
+      this.getUserById();
+
       console.log("Add Done ", res);
       if (res.status == 200) {
         Swal.fire('Good job!', 'You clicked the button!', 'success');
        
-      } else {
+      } 
+      
+      
+      else {
         Swal.fire({
           icon: 'error',  
           title: 'Oops...',
@@ -100,8 +112,13 @@ export class ProfileComponent implements OnInit {
           footer: '<a href="">Why do I have this issue?</a>',
         });
       }
+      // this.reloadPage();
     });
 
+
+  }
+  reloadPage(): void {
+    window.location.reload();
   }
  
 }

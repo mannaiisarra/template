@@ -46,44 +46,45 @@
 
        
    
-
-            
-      <div class="col-lg-3 col-md-8 col-11"  *ngFor="let item of formations; let i=index">
-        <div class="card" >
+        <div class="col-md-6 col-lg-3" *ngFor="let item of formations; let i=index">
+          <div class="card">
             <div class="fx-card-item">
-                <div class="fx-card-avatar fx-overlay-1"> <img src="{{ base_picture+item.photo }}" alt="user" class="bbrr-0 bblr-0">
-                  <div class="fx-overlay">
-                    <ul class="fx-info">
-                      <li><a class="btn btn-danger no-border"  [routerLink]="['/home/detailformation',item.id]" href="javascript:void(0);">View More</a></li>
-                    </ul>
-                  </div>
+              <div class="fx-card-avatar fx-overlay-1"> <img src="{{ base_picture+item.photo }}" alt="user" >
+                <div class="fx-overlay">
+                  <ul class="fx-info">
+                    <li><a class="btn btn-danger no-border"  [routerLink]="['/home/detailformation',item.id]" href="javascript:void(0);">View More</a></li>
+                  </ul>
                 </div>
-              <div class="card-body">
-                <span class="badge badge-primary">Online</span>	
-                <span class="badge badge-primary-light">English</span>
-                <span class="badge badge-primary-light">Spanish</span>													
-                <div class="cour-stac d-flex align-items-center text-fade mt-20">
-                  <p>Start Date {{ item.date_deDebut | date: "yyyy-MM-dd" }}</p>
-                  <p class="lt-sp">|</p>
-                  <p>Johen doe</p>
-                </div>
+              </div>
+            </div>
+           
+            <div class="card-body">
+              <div class="cour-stac d-flex align-items-center ">
+                <p>Start Date {{ item.date_deDebut | date: "yyyy-MM-dd" }}</p>
+                <p class="lt-sp">|</p>
+                <p>Johen doe</p>
+              </div>
+              <br>
               <h4 class="card-title justify-content-between d-flex align-items-center">{{ item.titre }}</h4>
               <p class="card-text">{{ item.description }}</p>
-              </div>
-          <div class="card-footer justify-content-between d-flex align-items-center">
-            <div class="d-flex font-size-18 font-weight-600">                       <img class="avatar avatar-14 rounded-circle bg-warning-light" src="assets/images/avatar/2.jpg" alt="...">
-                <img class="avatar avatar-14 rounded-circle bg-warning-light" src="assets/images/avatar/2.jpg" alt="...">
             </div>
-            <span>
-                <a href="javascript:void(0)"  (click)="removeFormation(item.id)"  class="text-danger" data-original-title="Delete" data-toggle="tooltip">
-                    <i class="ti-trash"></i>
-                  </a>
+          
+            <div class="card-footer justify-content-between d-flex">
+            <span class="text-muted">
+              <img class="avatar avatar-14 rounded-circle bg-warning-light" src="assets/images/avatar/2.jpg" alt="...">
+                <img class="avatar avatar-14 rounded-circle bg-warning-light" src="assets/images/avatar/2.jpg" alt="...">
             </span>
+            <br>
+            <span>
+              <a href="javascript:void(0)"  (click)="removeFormation(item.id)"  class="text-danger" data-original-title="Delete" data-toggle="tooltip">
+                <i class="ti-trash"></i>
+              </a>
+            </span>
+            </div>
           </div>
         </div>
-      </div>
-     
-    </div>
+            
+    
 
 
 
