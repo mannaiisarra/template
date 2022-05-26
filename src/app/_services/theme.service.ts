@@ -28,8 +28,8 @@ export class ThemeService {
   // addUser(data: any): Observable<Dataresponse<Users>> {
   //   return this.http.post<Dataresponse<Users>>(API_URL, data);
   // }
-  addTheme(data: any): Observable<DataResponseObject<Theme>> {
-    return this.http.post<DataResponseObject<Theme>>(API_URL + '/add', data);
+  addTheme(data: any,id_formation:any): Observable<DataResponseObject<Theme>> {
+    return this.http.post<DataResponseObject<Theme>>(API_URL + `/add/${id_formation}` , data);
   }
   getAllThemes(): Observable<DataResponseObject<Theme>> {
     return this.http.get<DataResponseObject<Theme>>(API_URL +'/');

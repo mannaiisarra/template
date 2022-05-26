@@ -62,7 +62,7 @@
                                       <br><br>
                                       <input class="form-control input-sm" type="date" placeholder=".input-sm" formControlName="date_deDebut">
                                       <br><br>
-                                      <input class="form-control input-sm" type="date" placeholder=".input-sm" formControlName="date_deDebut">
+                                      <input class="form-control input-sm" type="date" placeholder=".input-sm" formControlName="date_defin">
                                     
                                     </div>
                                   </div>
@@ -90,179 +90,65 @@
                         </div>
                       
                   </div>
-                    <div id="navpills-2" class="tab-pane">
+
+                    <div id="navpills-2" class="tab-pane" >
+                      <button type="button" data-toggle="modal" data-target="#myModal"  class="waves-effect waves-light btn btn-rounded btn-primary-light mb-5" > <i class="ti-plus"></i> Primary</button>
+                      <br><br>
                         <!-- Categroy 2 -->
-                        <div class="tab-pane animation-fade" id="category-2" role="tabpanel">
+                        <div class="tab-pane animation-fade" id="category-2" role="tabpanel" *ngFor="let item of theme">
                           <div class="panel-group panel-group-simple panel-group-continuous" id="accordion"
-                          aria-multiselectable="true" role="tablist">
-                          
-                          <button type="button" class="waves-effect waves-light btn btn-rounded btn-primary-light mb-5"> <i class="ti-plus"></i> Primary</button>
+                          aria-multiselectable="false" role="tablist">
+
+                          <div class="col-12"  >
+        
+                            <div class="nav-tabs-custom" >
+                           
+                      
+                              
+                               
+                                <!-- /.tab-pane -->
+                      
+                             
+                                <!-- /.tab-pane -->
+                      
+                                <div class="tab-pane" id="settings">	
+                                  <div class="box">	
+                      
+                 
                           <!-- Question 5 -->
                             <div class="panel">
-                              <div class="panel-heading" id="question-5" role="tab">
+                              <div class="panel-heading" id="question-5" role="tab" >
                                 <a class="panel-title" aria-controls="answer-5" aria-expanded="true" data-toggle="collapse"
                                 href="#answer-5" data-parent="#accordion">
-                                Nunc porttitor lectus non aliquam semper?
+                                <h1  style="color:rgb(149, 203, 194);" style="text-align:left"> {{item.theme_titre}}</h1>
                               </a>
                               </div>
                               <div class="panel-collapse collapse show" id="answer-5" aria-labelledby="question-5"
                               role="tabpanel">
-                                <div class="panel-body">
+                                <div class="panel-body"  style="background-color:rgb(219, 222, 240);">
                                   I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? But who has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain that produces no resultant pleasure?
+                                  <a [routerLink]="['/home/steps']" data-parent="#accordion" >
+                                <h5  style="color:rgb(26, 41, 140);">  ****** More</h5>
+                                </a>
                                 </div>
                               </div>
                             </div>
                             <!-- End Question 5 -->
                             <!-- Question 6 -->
-                            <div class="panel">
-                              <div class="panel-heading" id="question-6" role="tab">
-                                <a class="panel-title" aria-controls="answer-6" aria-expanded="false" data-toggle="collapse"
-                                href="#answer-6" data-parent="#accordion">
-                                Aliquam a lacus et mi convallis pellentesque?
-                              </a>
-                              </div>
-                              <div class="panel-collapse collapse" id="answer-6" aria-labelledby="question-6"
-                              role="tabpanel">
-                                <div class="panel-body">
-                                  I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? But who has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain that produces no resultant pleasure?
-                                </div>
-                              </div>
-                            </div>
-                            <!-- End Question 6 -->
-                            <!-- Question 7 -->
-                            <div class="panel">
-                              <div class="panel-heading" id="question-7" role="tab">
-                                <a class="panel-title" aria-controls="answer-7" aria-expanded="false" data-toggle="collapse"
-                                href="#answer-7" data-parent="#accordion">
-                                Praesent at felis feugiat, malesuada nibh vitae, accumsan erat?
-                              </a>
-                              </div>
-                              <div class="panel-collapse collapse" id="answer-7" aria-labelledby="question-7"
-                              role="tabpanel">
-                                <div class="panel-body">
-                                  I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? But who has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain that produces no resultant pleasure?
-                                </div>
-                              </div>
-                            </div>
+                          </div>			  
+                        </div>
+                        <!-- /.tab-pane -->
+                      
+                      <!-- /.tab-content -->
+                    </div>
+                    <!-- /.nav-tabs-custom -->
+                  </div> 
                             <!-- End Question 7 -->
                           </div>
                         </div>
                         <!-- End Categroy 2 -->						
                     </div>
-                    <div id="navpills-3" class="tab-pane">
-                        <!-- Categroy 3 -->
-                        <div class="tab-pane animation-fade" id="category-3" role="tabpanel">
-                          <div class="panel-group panel-group-simple panel-group-continuous" id="accordion1"
-                          aria-multiselectable="true" role="tablist">
-                            <!-- Question 8 -->
-                            <div class="panel">
-                              <div class="panel-heading" id="question-8" role="tab">
-                                <a class="panel-title" aria-controls="answer-8" aria-expanded="true" data-toggle="collapse"
-                                href="#answer-8" data-parent="#accordion1">
-                                Proin ac velit non neque efficitur pretium a a nunc?
-                              </a>
-                              </div>
-                              <div class="panel-collapse collapse show" id="answer-8" aria-labelledby="question-8"
-                              role="tabpanel">
-                                <div class="panel-body">
-                                  I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? But who has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain that produces no resultant pleasure?
-                                </div>
-                              </div>
-                            </div>
-                            <!-- End Question 8 -->
-                            <!-- Question 9 -->
-                            <div class="panel">
-                              <div class="panel-heading" id="question-9" role="tab">
-                                <a class="panel-title" aria-controls="answer-9" aria-expanded="false" data-toggle="collapse"
-                                href="#answer-9" data-parent="#accordion1">
-                                Nam egestas massa vitae magna interdum volutpat?
-                              </a>
-                              </div>
-                              <div class="panel-collapse collapse" id="answer-9" aria-labelledby="question-9"
-                              role="tabpanel">
-                                <div class="panel-body">
-                                  I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? But who has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain that produces no resultant pleasure?
-                                </div>
-                              </div>
-                            </div>
-                            <!-- End Question 9 -->
-                            <!-- Question 10 -->
-                            <div class="panel">
-                              <div class="panel-heading" id="question-10" role="tab">
-                                <a class="panel-title" aria-controls="answer-10" aria-expanded="false" data-toggle="collapse"
-                                href="#answer-10" data-parent="#accordion1">
-                                Praesent pretium leo sed turpis vehicula semper?
-                              </a>
-                              </div>
-                              <div class="panel-collapse collapse" id="answer-10" aria-labelledby="question-10"
-                              role="tabpanel">
-                                <div class="panel-body">
-                                  I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? But who has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain that produces no resultant pleasure?
-                                </div>
-                              </div>
-                            </div>
-                            <!-- End Question 10 -->
-                          </div>
-                        </div>
-                        <!-- End Categroy 3 -->						
-                    </div>
-                    <div id="navpills-4" class="tab-pane">
-                        <!-- Categroy 4 -->
-                        <div class="tab-pane animation-fade" id="category-4" role="tabpanel">
-                          <div class="panel-group panel-group-simple panel-group-continuous" id="accordion3"
-                          aria-multiselectable="true" role="tablist">
-                            <!-- Question 11 -->
-                            <div class="panel">
-                              <div class="panel-heading" id="question-11" role="tab">
-                                <a class="panel-title" aria-controls="answer-11" aria-expanded="true" data-toggle="collapse"
-                                href="#answer-11" data-parent="#accordion3">
-                                Sed quis nunc bibendum, luctus nulla non, luctus odio?
-                              </a>
-                              </div>
-                              <div class="panel-collapse collapse show" id="answer-11" aria-labelledby="question-11"
-                              role="tabpanel">
-                                <div class="panel-body">
-                                  I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? But who has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain that produces no resultant pleasure?
-                                </div>
-                              </div>
-                            </div>
-                            <!-- End Question 11 -->
-                            <!-- Question 12 -->
-                            <div class="panel">
-                              <div class="panel-heading" id="question-12" role="tab">
-                                <a class="panel-title" aria-controls="answer-12" aria-expanded="false" data-toggle="collapse"
-                                href="#answer-12" data-parent="#accordion3">
-                                Mauris sit amet justo pharetra, venenatis purus eu, efficitur nunc?
-                              </a>
-                              </div>
-                              <div class="panel-collapse collapse" id="answer-12" aria-labelledby="question-12"
-                              role="tabpanel">
-                                <div class="panel-body">
-                                  I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? But who has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain that produces no resultant pleasure?
-                                </div>
-                              </div>
-                            </div>
-                            <!-- End Question 12 -->
-                            <!-- Question 13 -->
-                            <div class="panel">
-                              <div class="panel-heading" id="question-13" role="tab">
-                                <a class="panel-title" aria-controls="answer-13" aria-expanded="false" data-toggle="collapse"
-                                href="#answer-13" data-parent="#accordion3">
-                                Cras venenatis lectus sit amet purus rutrum, non facilisis ligula aliquet?
-                              </a>
-                              </div>
-                              <div class="panel-collapse collapse" id="answer-13" aria-labelledby="question-13"
-                              role="tabpanel">
-                                <div class="panel-body">
-                                  I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? But who has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain that produces no resultant pleasure?
-                                </div>
-                              </div>
-                            </div>
-                            <!-- End Question 13 -->
-                          </div>
-                        </div>
-                        <!-- End Categroy 4 -->						
-                    </div>
+                  
                 </div>
             </div>
             <!-- /.box-body -->
@@ -271,8 +157,43 @@
         </div>  
       </div>
       <!-- /.row -->
-      
+    
+
     </section>
     <!-- /.content -->	  
+ 
+ 
+    <div id="myModal" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h4 class="modal-title" id="myModalLabel">ADD New Theme </h4>
+                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+              </div>
+              <div class="modal-body">
+                  <form class="form-horizontal" [formGroup]="formTheme"  >
+                      <div class="form-group">
+                          <label class="col-md-12">Theme</label>
+                          <div class="col-md-12">
+                              <input type="text" class="form-control" placeholder=""  formControlName="theme_titre">
+                          </div>
+                         
+                        
+                      </div>
+                      
+                      <div class="modal-footer">
+                          <button type="button" class="btn btn-success" data-dismiss="modal" (click)="addTheme()"  >Add</button>
+                          <button type="button" class="btn btn-default float-right" data-dismiss="modal">Cancel</button>
+                      </div>
+                  </form>
+              </div>
+             
+          </div>
+          <!-- /.modal-content -->
+      </div>
+      <!-- /.modal-dialog -->
+  </div>
+   
+    <!-- /.modal -->
 
 <!-- /.content-wrapper -->
