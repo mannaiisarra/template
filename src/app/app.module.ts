@@ -14,7 +14,6 @@ import { AddComponent } from './home/formateur-apprenant/add/add.component';
 import { FormationComponent } from './home/formation/formation.component';
 import { DetailComponent } from './home/formation/detail/detail.component';
 import { DatePipe } from '@angular/common';
-import { AddFormationComponent } from './home/formation/add-formation/add-formation.component';
 import { StepsComponent } from './home/formation/steps/steps.component';
 @NgModule({
   declarations: [
@@ -28,9 +27,7 @@ import { StepsComponent } from './home/formation/steps/steps.component';
     AddComponent,
     FormationComponent,
     DetailComponent,
- 
-    AddFormationComponent,
-      StepsComponent
+    StepsComponent
   ],
   imports: [
     BrowserModule,

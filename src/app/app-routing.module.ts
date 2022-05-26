@@ -10,7 +10,6 @@ import { FormationComponent } from './home/formation/formation.component';
 import { DetailComponent } from './home/formation/detail/detail.component';
 import { StepsComponent } from './home/formation/steps/steps.component';
 
-import { AddFormationComponent } from './home/formation/add-formation/add-formation.component';
 
 const routes: Routes = [
     {path:"login",component:LoginComponent},
@@ -23,7 +22,6 @@ const routes: Routes = [
          {path:"add",component:AddComponent},
          {path:"formation",component:FormationComponent},
          {path:"detailformation/:id",component:DetailComponent},
-         {path:"addformation",component:AddFormationComponent},
          {path:"steps",component:StepsComponent},
          {path:"AddComponent",component:AddComponent}
 

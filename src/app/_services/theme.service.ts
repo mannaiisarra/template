@@ -21,6 +21,9 @@ export class ThemeService {
   getThemeById(id:any): Observable<DataResponseObject<Theme>> {
     return this.http.get<DataResponseObject<Theme>>(API_URL+'/findById/'+id);
   }
+  getThemeByFormation(id:any): Observable<DataResponseObject<Theme>> {
+    return this.http.get<DataResponseObject<Theme>>(API_URL+'/chercher/'+id);
+  }
 
   updateTheme(id: string, data: any): Observable<DataResponseObject<Theme>> {
     return this.http.put<DataResponseObject<Theme>>(API_URL +'/updateTheme/'+ id, data);

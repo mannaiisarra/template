@@ -35,9 +35,9 @@ export class DetailComponent implements OnInit {
     this.formFormation = this.fb.group({
       titre: ['', [Validators.required]],
       description: ['', [Validators.required]],
-      photo: ['', [Validators.required]],
       date_deDebut: ['', [Validators.required]],
       date_defin: ['', [Validators.required]],
+      photo: ['', [Validators.required]],
     });
     this.formationService.getFormationbyId(this.id).subscribe(res=>{
 
@@ -48,8 +48,10 @@ export class DetailComponent implements OnInit {
       this.formFormation.get("titre")?.setValue(res.data?.titre)
       this.formFormation.get("description")?.setValue(res.data?.description)
       this.formFormation.get("date_deDebut")?.setValue(this.datePipe.transform(new Date(res.data?.date_deDebut),"yyyy-MM-dd"))
-      this.formFormation.get("date_defin")?.setValue(this.datePipe.transform(new Date(res.data?.date_defin),"yyyy-MM-dd"))
+      this.formFormation.get("date_defin")?.setValue(this.datePipe.transform(new Date(res.data?.date_deDebut),"yyyy-MM-dd"))
       this.photo=this.base_picture+res.data?.photo
+      this.formFormation.get("photo")?.setValue(this.base_picture+res.data?.photo)
+
      })
 
      this.formTheme = this.fb.group({
@@ -63,14 +65,20 @@ export class DetailComponent implements OnInit {
      
 
   })
-  this.getUserById();
-  this.getAll();
-
+  this.getThemeByFormationn();
+ 
   }
 
   handleFileInput(e: any) {
+    // if(e.target.files){
+    //   var reader=new FileReader();
+    //   reader.readAsDataURL(e.target.files[0]);
+    //   reader.onload=(event:any ) => {
+    //     this.photo=event.target.result;
+    //   }
+    // }
     console.log("Fine Input Done ", e.target.files[0])
-  
+
     this.fileToUpload = e.target.files[0]
 
   }
@@ -79,15 +87,16 @@ export class DetailComponent implements OnInit {
   EditFormation()  {
     console.log('Done ', this.formFormation.value);
     const formdata = new FormData();
-    formdata.append("titre", this.formFormation.get('titre')!.value)
     formdata.append("description", this.formFormation.get('description')!.value)
+    formdata.append("file", this.fileToUpload!)
     formdata.append("date_deDebut", this.formFormation.get('date_deDebut')!.value)
     formdata.append("date_defin", this.formFormation.get('date_defin')!.value)
-    formdata.append("file", this.fileToUpload!);
+    formdata.append("titre", this.formFormation.get('titre')!.value);
+
 
 
     this.formationService.updateformation(this.id,formdata).subscribe((res) => {
-      console.log("Add Done update ", res.data);
+      console.log("Add Done ", res.data);
       if (res.status == 200) {
         Swal.fire('Good job!', 'You clicked the button!', 'success');
       } else {
@@ -107,7 +116,7 @@ export class DetailComponent implements OnInit {
     this.themeService.addTheme(this.formTheme.value,this.id).subscribe(
       data => {
         console.log(data);
-       
+       this.getThemeByFormationn();
         Swal.fire('Good job!', 'You clicked the button!', 'success');
 
       },
@@ -124,11 +133,12 @@ export class DetailComponent implements OnInit {
       
      
      );
-
+    
     }
-    getUserById(){
-      this.themeService.getThemeById(this.id).subscribe(res=>{
+    getThemeByFormationn(){
+      this.themeService.getThemeByFormation(this.id).subscribe(res=>{
     console.log(" data ",res.data);
+    this.theme = res.data;
    
    
     
@@ -136,13 +146,7 @@ export class DetailComponent implements OnInit {
 
 })
 }
-getAll(){
-  this.themeService.getAllThemes().subscribe(res=>{
-   console.log("res theme : ",res.data)
-  this.theme=res.data;
-  })
 
-}
 
   
 }
