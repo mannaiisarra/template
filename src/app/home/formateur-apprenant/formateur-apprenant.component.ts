@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Users } from 'src/app/model/users';
+import { Roles } from 'src/app/model/roles';
 import { UserService } from 'src/app/_services/user.service';
 import Swal from 'sweetalert2';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -17,6 +18,8 @@ export class FormateurApprenantComponent implements OnInit {
   formUser!: FormGroup;
   id:any;
   user:any;
+  role:any;
+  private roles: Roles[] | undefined=[];
   constructor(private fb: FormBuilder, private router:Router, private activatedRouter:ActivatedRoute,private userService: UserService) {
     console.log("id from activate router ",this.activatedRouter.snapshot.params["id"])
     this.id=this.activatedRouter.snapshot.params["id"];
@@ -52,14 +55,36 @@ export class FormateurApprenantComponent implements OnInit {
   
   })
 }
+getAllRoles(){
+  this.userService.getAllRoles().subscribe(ress=>{
+    console.log("res roles : ",ress.data)
+    this.role=ress.data
+  
 
+   })
+}
 
 
   
   getAll(){
     this.userService.getAll().subscribe(res=>{
-     console.log("res categories : ",res.data)
-    this.users=res.data;
+      console.log("res users  : ",res.data)
+      this.users=res.data;
+    
+     
+
+  
+    
+    
+
+    // this.roles = users.roles;
+
+    // this.showFORMATEUR = this.roles.includes('FORMATEUR');
+    this.users= this.users.filter(item =>
+      {
+        return item.roles[0].name!== "ADMIN" && item.roles[0].name!=="SUPADMIN";
+      }
+      );
     })
   }
   removeUser(id:any){

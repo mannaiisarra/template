@@ -118,11 +118,12 @@ export class AddComponent implements OnInit {
     this.userService.getAllRoles().subscribe(res=>{
       console.log("res roles : ",res.data)
       this.roles=res.data
-      this.roles = this.roles.filter(item =>
+      this.roles= this.roles.filter(item =>
         {
-          return item.name !== 'ADMIN';
+          return item.name!== "ADMIN" &&   item.name!== "SUPADMIN";
         }
         );
+    
 
      })
   }

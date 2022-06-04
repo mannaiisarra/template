@@ -64,7 +64,9 @@
                               <td>{{item.adress}}</td>
                               <td><img src="{{ base_picture+item.photo }}" alt="product" width="80" class="avatar avatar-lg rounded10"></td>
 
-                              <td  *ngFor="let rol of item.roles"><span class="badge badge-pill badge-pill">{{rol.name}}</span></td>
+                              <!-- *ngIf="showFORMATEUR"  -->
+
+                              <td  *ngFor="let rol of item.roles" ><span class="badge badge-pill badge-pill">{{rol.name}}</span></td>
                               <td><a href="javascript:void(0)" data-toggle="modal" [routerLink]="['/home/formateur_App',item.id]" data-target="#myModal"   class="text-info mr-10"  data-original-title="Edit">
                                       <i class="ti-marker-alt"></i>
 

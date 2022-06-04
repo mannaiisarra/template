@@ -9,8 +9,10 @@ import { AddComponent } from './home/formateur-apprenant/add/add.component';
 import { FormationComponent } from './home/formation/formation.component';
 import { DetailComponent } from './home/formation/detail/detail.component';
 import { StepsComponent } from './home/formation/steps/steps.component';
-
-
+import { ClientComponent } from './home/client/client.component';
+import { EditComponent } from './home/client/edit/edit.component';
+import { ErrorComponent } from './home/error/error.component';
+import { DemandeComponent } from './home/demande/demande.component';
 const routes: Routes = [
     {path:"login",component:LoginComponent},
     
@@ -22,11 +24,15 @@ const routes: Routes = [
          {path:"add",component:AddComponent},
          {path:"formation",component:FormationComponent},
          {path:"detailformation/:id",component:DetailComponent},
-         {path:"steps",component:StepsComponent},
-         {path:"AddComponent",component:AddComponent}
+          {path:"theme/:id",component:StepsComponent},
+          {path:"listclient",component:ClientComponent},
+          {path:"editUser/:id",component:EditComponent},
+         {path:"AddComponent",component:AddComponent},
+         {path:"listOfRequest",component:DemandeComponent}
 
        
        ]},
+       {path:"**",component:ErrorComponent}
     
     ]
     

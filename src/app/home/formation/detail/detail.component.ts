@@ -6,6 +6,8 @@ import { FormationService } from 'src/app/_services/formation.service';
 import { ThemeService } from 'src/app/_services/theme.service';
 import { Theme } from 'src/app/model/theme';
 import { DatePipe } from '@angular/common';
+import { UserService } from 'src/app/_services/user.service';
+import { AuthService } from 'src/app/_services/auth.service';
 
 import { environment } from 'src/environments/environment.prod';
 
@@ -18,18 +20,25 @@ import { environment } from 'src/environments/environment.prod';
 export class DetailComponent implements OnInit {
   formFormation!: FormGroup;
   formTheme!: FormGroup;
+  formEmail!: FormGroup;
+  term:string="";
+  
   base_picture=environment.base_picture;
   fileToUpload: File | null = null;
   theme:any ;
-
+ theme1:any ;
   photo:any;
+  user:any
   id:string=this.activatedRouter.snapshot.params["id"];
-  constructor(private fb: FormBuilder, private router:Router, private activatedRouter:ActivatedRoute,private formationService: FormationService,private themeService: ThemeService,private datePipe:DatePipe) {  }
+
+   
+
+
+  constructor(private fb: FormBuilder, private router:Router, private activatedRouter:ActivatedRoute,private formationService: FormationService,private themeService: ThemeService,private datePipe:DatePipe,private userService:UserService,private authService:AuthService ) {  }
 
   ngOnInit(): void {
-
-    console.log("id from activate router ",this.id)
-  
+this.search();
+    console.log("id from activate router ",this.id) 
 
 
     this.formFormation = this.fb.group({
@@ -40,7 +49,6 @@ export class DetailComponent implements OnInit {
       photo: ['', [Validators.required]],
     });
     this.formationService.getFormationbyId(this.id).subscribe(res=>{
-
   
 
 
@@ -61,13 +69,40 @@ export class DetailComponent implements OnInit {
     });
     this.formTheme.patchValue({
       theme_titre: '',
-     // formation: '',  
-     
+     // formation: '',       
 
   })
-  this.getThemeByFormationn();
- 
+
+  this.formEmail = this.fb.group({
+  
+    email: ['', [Validators.required]],
+  
+
+  });
+
+this.getThemeByFormationn();
+
+
+
   }
+
+  /**************************************************End ngOnInit **************************************************************/
+/************ get theme by id **********/
+getThemeById(id:any){
+  this.themeService.getThemeById(id).subscribe(res=>{
+    console.log("theme by idddd  ",res.data);
+    this.theme1 = res.data;
+  
+     this.formTheme.patchValue({
+      id: this.theme1.id,
+      theme_titre: this.theme1.theme_titre, })
+
+  })
+
+}
+/************* get theme by id ************/
+
+
 
   handleFileInput(e: any) {
     // if(e.target.files){
@@ -82,7 +117,7 @@ export class DetailComponent implements OnInit {
     this.fileToUpload = e.target.files[0]
 
   }
-
+/*********** update formation  **********/
 
   EditFormation()  {
     console.log('Done ', this.formFormation.value);
@@ -110,6 +145,10 @@ export class DetailComponent implements OnInit {
     });
 
   }
+
+  /******** end update formation ******/
+
+  /********** Ajouter theme ************/
   addTheme(): void {
 
     
@@ -146,7 +185,82 @@ export class DetailComponent implements OnInit {
 
 })
 }
+  /********** end Ajouter theme ************/
+
+    /********** delate theme By id ************/
+removeTheme(id:any){
+  console.log(" Product deleted", id)
+  Swal.fire({
+    title: 'Are you sure?',
+    text: "You won't be able to revert this!",
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Yes, delete it!',
+  }).then((result) => {
+    if (result.isConfirmed) {
+      this.themeService.removeTheme(id).subscribe((item) => {
+        console.log('item remove', item);
+        this.getThemeByFormationn();
+        Swal.fire('Deleted!', 'User has been deleted.', 'success');
+      });
+    }
+  })
+}
+ /********** END  delate theme By id ************/
 
 
+  /**********   update theme By id ************/
+
+
+EditTheme() {
+
+
+
+  this.themeService.updateTheme(this.theme1.id,this.formTheme.value).subscribe((res) => {
+    console.log("Add Done ", res);
+    if (res.status == 200) {
+      Swal.fire('Good job!', 'You clicked the button!', 'success');
+      this.getThemeByFormationn();
+    } else {
+      Swal.fire({
+        icon: 'error',  
+        title: 'Oops...',
+        text: 'Something went wrong!',
+        footer: '<a href="">Why do I have this issue?</a>',
+      });
+    }
+  });
+
+}
+ /********** END  update theme By id ************/
+
+
+ search(): void {
+  //const formdata = new FormData();
+  //formdata.append("email", this.formEmail.get('email')!.value);
+    
+  this.userService.getAll().subscribe(
+    res => {
+      console.log(res.data);
+    this.user=res.data
+    this.user= this.user.filter(item =>
+      {
+        return item.roles[0].name!== "ADMIN" &&   item.roles[0].name!== "SUPADMIN";
+      }
+      );
+    
+
+    },
+
+    
+    
+   
+   );
+  
+  }
+
+ 
   
 }

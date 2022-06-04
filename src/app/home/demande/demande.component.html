@@ -1,0 +1,126 @@
+<div class="content-header">
+			<div class="d-flex align-items-center">
+				<div class="mr-auto">
+					<h3 class="page-title">List widgets</h3>
+					<div class="d-inline-block align-items-center">
+						<nav>
+							<ol class="breadcrumb">
+								<li class="breadcrumb-item"><a href="#"><i class="mdi mdi-home-outline"></i></a></li>
+								<li class="breadcrumb-item" aria-current="page">Widgets</li>
+								<li class="breadcrumb-item active" aria-current="page">List widgets</li>
+							</ol>
+						</nav>
+					</div>
+				</div>
+				
+			</div>
+		</div>	  
+
+		<!-- Main content -->
+		<section class="content">
+
+		  <div class="row">
+			  
+			
+			  
+			  <div class="col-12 col-xl-6">
+				<div class="box">
+					<div class="box-header with-border">
+						<h4 class="box-title">waiting list</h4>
+						<ul class="box-controls pull-right d-md-flex d-none">
+						  <li class="dropdown">
+							<button class="btn btn-success dropdown-toggle px-10 " data-toggle="dropdown" href="#">Create</button>
+							<div class="dropdown-menu dropdown-menu-right">
+							  <a class="dropdown-item" href="#"><i class="ti-import"></i> Import</a>
+							  <a class="dropdown-item" href="#"><i class="ti-export"></i> Export</a>
+							  <a class="dropdown-item" href="#"><i class="ti-printer"></i> Print</a>
+							  <div class="dropdown-divider"></div>
+							  <a class="dropdown-item" href="#"><i class="ti-settings"></i> Settings</a>
+							</div>
+						  </li>
+						</ul>
+					</div>
+					<div class="box-body">
+						<div class="d-flex align-items-center mb-25"  *ngFor="let item of demande">
+							<span class="bullet bullet-bar bg-success align-self-stretch"></span>	
+													
+							<div class="h-20 mx-20 flex-shrink-0">							
+								<input type="checkbox" id="md_checkbox_21" class="filled-in chk-col-success">
+								<label for="md_checkbox_21" class="h-20 p-10 mb-0"></label>
+							</div>
+							
+							<div class="d-flex flex-column flex-grow-1">
+								<a href="#" class="text-dark hover-success font-weight-500 font-size-16">
+									{{item.id}}
+								</a>
+								<span class="text-fade font-weight-500">
+									Due in 2 Days
+								</span>
+							</div>
+							<div class="col-xl-2 col-6 text-center align-self-center mb-20">
+								<button type="button" class="btn btn-xs btn-toggle" data-toggle="button" aria-pressed="true" autocomplete="off" (click)="activeAprenent()" >
+								  <div class="handle"></div>
+								</button>
+							  </div>
+                              
+						
+                              
+                              
+						</div>
+                       
+					
+						
+					</div>
+					<div class="text-center bt-1 border-light p-10">
+						<a class="text-uppercase d-block font-size-12" href="#"> 
+							Supprimer Les demandes </a>
+					  </div>
+				</div>
+			  </div>
+			  
+			  <div class="col-12 col-xl-6">
+				<div class="box bg-success-light">
+					<div class="box-header with-border">
+						<h4 class="box-title text-success">Todo</h4>
+						<ul class="box-controls pull-right d-md-flex d-none">
+						  <li class="dropdown">
+							<button class="btn btn-success dropdown-toggle px-10 " data-toggle="dropdown" href="#">Create</button>
+							<div class="dropdown-menu dropdown-menu-right">
+							  <a class="dropdown-item" href="#"><i class="ti-import"></i> Import</a>
+							  <a class="dropdown-item" href="#"><i class="ti-export"></i> Export</a>
+							  <a class="dropdown-item" href="#"><i class="ti-printer"></i> Print</a>
+							  <div class="dropdown-divider"></div>
+							  <a class="dropdown-item" href="#"><i class="ti-settings"></i> Settings</a>
+							</div>
+						  </li>
+						</ul>
+					</div>
+					<div class="box-body">
+						
+						<div class="d-flex align-items-center mb-25">					
+							<div class="h-20 mx-20 flex-shrink-0">							
+								<input type="checkbox" id="md_checkbox_26" class="filled-in chk-col-success">
+								<label for="md_checkbox_26" class="h-20 p-10 mb-0"></label>
+							</div>
+							
+							<div class="d-flex flex-column flex-grow-1">
+								<a href="#" class="text-dark hover-success font-weight-500 font-size-16">
+								
+								</a>
+								<span class="text-mute font-weight-500">
+									Due in 2 Days
+								</span>
+							</div>
+							<span class="badge badge-warning-light">Pending</span>
+						</div>
+
+						
+					</div>
+				</div>
+			  </div>
+			  
+			
+			</div>
+		  <!-- /.row -->
+
+		</section>

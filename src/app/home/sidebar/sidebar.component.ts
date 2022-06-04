@@ -1,3 +1,4 @@
+import { TokenStorageService } from 'src/app/_services/token-storage.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SidebarComponent implements OnInit {
 
-  constructor() { }
+  private roles: string[] = [];
+  isLoggedIn = false;
+  showSuprAdminBoard = false;
+  showADMINBoard = false;
+  username?: string;
+
+
+ constructor(private tokenStorageService: TokenStorageService) { }
 
   ngOnInit(): void {
+       this.isLoggedIn = !!this.tokenStorageService.getToken();
+
+    if (this.isLoggedIn) {
+      const user = this.tokenStorageService.getUser();
+      this.roles = user.roles;
+
+      this.showSuprAdminBoard = this.roles.includes('SUPADMIN');
+      this.showADMINBoard = this.roles.includes('ADMIN');
+
+      this.username = user.username;
+    }
   }
 
 }

@@ -45,11 +45,18 @@ export class UserService {
   // addUser(data: any): Observable<Dataresponse<Users>> {
   //   return this.http.post<Dataresponse<Users>>(API_URL, data);
   // }
+
   addCategory(data: any): Observable<Dataresponse<Users>> {
     return this.http.post<Dataresponse<Users>>(API_URL + '/signup', data);
   }
+  
   getAllRoles(): Observable<Dataresponse<Roles>> {
     return this.http.get<Dataresponse<Roles>>(API_URL +'/roles');
   }
+  Search(email:any): Observable<Dataresponse<Users>> {
+    return this.http.post<Dataresponse<Users>>(API_URL + '/findbyEmail', email);
+  }
+
+
  
 }

@@ -15,6 +15,12 @@ import { FormationComponent } from './home/formation/formation.component';
 import { DetailComponent } from './home/formation/detail/detail.component';
 import { DatePipe } from '@angular/common';
 import { StepsComponent } from './home/formation/steps/steps.component';
+import { RechercheMembrePipe } from './pipes/recherche-membre.pipe';
+
+import { ClientComponent } from './home/client/client.component';
+import { EditComponent } from './home/client/edit/edit.component';
+import { ErrorComponent } from './home/error/error.component';
+import { DemandeComponent } from './home/demande/demande.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,7 +33,13 @@ import { StepsComponent } from './home/formation/steps/steps.component';
     AddComponent,
     FormationComponent,
     DetailComponent,
-    StepsComponent
+    StepsComponent,
+    RechercheMembrePipe,
+
+    ClientComponent,
+     EditComponent,
+     ErrorComponent,
+     DemandeComponent
   ],
   imports: [
     BrowserModule,

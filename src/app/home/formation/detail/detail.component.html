@@ -30,8 +30,9 @@
                 <!-- Nav tabs -->
                 <ul class="nav nav-pills rounded nav-justified">
                   <li class="nav-item"> <a href="#navpills-1" class="nav-link active" data-toggle="tab" aria-expanded="false">GEERAL</a> </li>
-                  <li class="nav-item"> <a href="#navpills-2" class="nav-link" data-toggle="tab" aria-expanded="false">CONTENT</a> </li>
-                  <li class="nav-item"> <a href="#navpills-3" class="nav-link" data-toggle="tab" aria-expanded="true">MEMBERS</a> </li>
+                  <li class="nav-item"> <a href="#navpills-2" class="nav-link" data-toggle="tab" >CONTENT</a> </li>
+                 
+                  <li class="nav-item"> <a href="#navpills-4" class="nav-link" data-toggle="tab" aria-expanded="true">MEMBERS</a> </li>
               </ul>
             </div>
             <!-- /.box-body -->
@@ -68,12 +69,16 @@
                                   </div>
                                 </div>
                                 <div class="col-md-5">
-                                  <span>Upload Anonther Image :</span>
+                                 
+                                    <span>Upload Anonther Image :</span>
                                     <br>
                                     <input class="form-control" type="file" id="formFile" type="file" formControlName="file"  multiple (change)="handleFileInput($event)" />
                                     <br>
-                                  
+                                    <div  class="b-dashed">
                                   <img [src]="photo" class="img-responsive" alt="" /></div>
+
+                                  </div>
+                                 
                               </div>
                             </div>
                             <div class="form-actions mt-25">
@@ -91,68 +96,162 @@
                       
                   </div>
 
-                    <div id="navpills-2" class="tab-pane" >
-                      <button type="button" data-toggle="modal" data-target="#myModal"  class="waves-effect waves-light btn btn-rounded btn-primary-light mb-5" > <i class="ti-plus"></i> Primary</button>
-                      <br><br>
-                        <!-- Categroy 2 -->
-                        <div class="tab-pane animation-fade" id="category-2" role="tabpanel" *ngFor="let item of theme">
-                          <div class="panel-group panel-group-simple panel-group-continuous" id="accordion"
-                          aria-multiselectable="false" role="tablist">
+                  
+                  <div id="navpills-2" class="tab-pane" >
+                    <button type="button" data-toggle="modal" data-target="#myModal"  class="waves-effect waves-light btn btn-rounded btn-primary-light mb-5" > <i class="ti-plus"></i> Primary</button>
+                    <br><br>
+                      <!-- Categroy 2 -->
+                      <div id="accordion" *ngFor="let item of theme">
+                        <div class="card" >
+                          <div class="bg-secondary-light ">
+                          <div class="card-header" id="headingOne"  >
+                            <h5 class="mb-0"> 						<i class="fa fa-bookmark-o" aria-hidden="true"></i> 
 
-                          <div class="col-12"  >
-        
-                            <div class="nav-tabs-custom" >
-                           
-                      
-                              
-                               
-                                <!-- /.tab-pane -->
-                      
-                             
-                                <!-- /.tab-pane -->
-                      
-                                <div class="tab-pane" id="settings">	
-                                  <div class="box">	
-                      
-                 
-                          <!-- Question 5 -->
-                            <div class="panel">
-                              <div class="panel-heading" id="question-5" role="tab" >
-                                <a class="panel-title" aria-controls="answer-5" aria-expanded="true" data-toggle="collapse"
-                                href="#answer-5" data-parent="#accordion">
-                                <h1  style="color:rgb(149, 203, 194);" style="text-align:left"> {{item.theme_titre}}</h1>
-                              </a>
+
+                              <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                {{item.theme_titre}}
+                              </button>
+                            </h5>
+                            <div class="btn-group">
+                              <a  style="text-align:left"   type="button" data-toggle="dropdown"> <i style="font-size:24px" class="fa">&#xf142;</i></a>
+                              <div class="dropdown-menu">
+                              <a class="dropdown-item" (click)="getThemeById(item.id)" data-toggle="modal" data-target="#myModall" >Renommer</a>
+                              <a class="dropdown-item" (click)="removeTheme(item.id)">Supprimer</a>
                               </div>
-                              <div class="panel-collapse collapse show" id="answer-5" aria-labelledby="question-5"
-                              role="tabpanel">
-                                <div class="panel-body"  style="background-color:rgb(219, 222, 240);">
-                                  I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? But who has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain that produces no resultant pleasure?
-                                  <a [routerLink]="['/home/steps']" data-parent="#accordion" >
-                                <h5  style="color:rgb(26, 41, 140);">  ****** More</h5>
-                                </a>
+
+
+                            </div>
+                        <!-- <a style="text-align:left"  [routerLink]="['/home/steps']"> <i style="font-size:24px" class="fa">&#xf142;</i>
+
+                              </a> -->
+
+                          </div>
+                        </div>
+                      
+                          <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                            <div class="card-body">
+                              <div class=" tab-pane animation-fade active" id="category-1" role="tabpanel">
+                                <div class="panel-group panel-group-simple panel-group-continuous" id="accordion2"
+                                aria-multiselectable="true" role="tablist">
+                                <!-- Question 1 -->
+                                <div class="panel">
+                                  <div class="panel-heading" id="question-1" role="tab">
+                                  <a class="panel-title" aria-controls="answer-1" aria-expanded="true" data-toggle="collapse"
+                                  href="#answer-1" data-parent="#accordion2">
+                                  Lorem ipsum dolor sit amet, consectetur adipiscing elit?
+                                  </a>
+                                  </div>
+                                  <div class="panel-collapse collapse show" id="answer-1" aria-labelledby="question-1"
+                                  role="tabpanel">
+                                  <div class="panel-body">
+                                    I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? But who has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain that produces no resultant pleasure?
+                                  </div>
+                                  </div>
+                                </div>
+                                <div class="panel">
+                                  <div class="panel-heading" id="question-1" role="tab">
+                                  <a class="panel-title" aria-controls="answer-1" aria-expanded="true" data-toggle="collapse"
+                                  href="#answer-1" data-parent="#accordion2">
+                                  Lorem ipsum dolor sit amet, consectetur adipiscing elit?
+                                  </a>
+                                  </div>
+                                  <div class="panel-collapse collapse show" id="answer-1" aria-labelledby="question-1"
+                                  role="tabpanel">
+                                  <div class="panel-body">
+                                    I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? But who has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain that produces no resultant pleasure?
+                                  </div>
+                                  </div>
                                 </div>
                               </div>
                             </div>
-                            <!-- End Question 5 -->
-                            <!-- Question 6 -->
-                          </div>			  
-                        </div>
-                        <!-- /.tab-pane -->
-                      
-                      <!-- /.tab-content -->
-                    </div>
-                    <!-- /.nav-tabs-custom -->
-                  </div> 
-                            <!-- End Question 7 -->
+                          
+                            </div>
+                           
+
+                          </div>
+                          <div class="bg-secondary-light ">
+                          <div style="text-align:right" class="card-footer" id="headingOne">
+                            <a [routerLink]="['/home/theme',item.id]">dddddddddd</a>
                           </div>
                         </div>
-                        <!-- End Categroy 2 -->						
+                      </div>
+                      
+                      </div>
+                      
+                     
+                      <!-- End Categroy 2 -->						
+                  </div>
+              
+                 
+
+                <div id="navpills-4" class="tab-pane">
+                  <!-- Categroy 4 -->
+                  <div class="tab-pane animation-fade" id="category-4" role="tabpanel">
+                    <div class="panel-group panel-group-simple panel-group-continuous" id="accordion3"
+                    aria-multiselectable="true" role="tablist">
+                    <!-- Question 11 -->
+                    <form >
+                    <div class="tab-pane active" id="control-sidebar-home-tab">
+                        <div class="flexbox">
+                          
+                    <a href="javascript:void(0)" class="text-grey">
+                      <i class="ti-more"></i>
+                    </a>	
+                    <p>Users</p>
+                    <a href="javascript:void(0)" class="text-right text-grey"></a>
                     </div>
+                 
+                    <div class="lookup lookup-sm lookup-right d-none d-lg-block" >
+                    <input type="text" name="s" placeholder="Search" class="w-p100"  [(ngModel)]="term" >
+                    </div>
+                    
+                        <div class="media-list media-list-hover mt-20" *ngFor="let userr of user | rechercheMembre:term " >
+                    <div class="media py-10 px-0"  >
+                      <a class="avatar avatar-lg status-success" href="#">
+                      <img src="{{ base_picture+userr.photo }}" alt="...">
+                      </a>
+                      <div class="media-body">
+                      <p class="font-size-16">
+                        <a class="hover-primary" href="#"><strong>{{userr.username}}</strong></a>
+                      </p>
+                     
+                        <span *ngFor="let rol of userr.roles">{{rol.name}}</span>
+                      </div>
+                      <div class="media-right gap-items">
+                        <a href="javascript:void(0)" data-toggle="modal"  class="text-info mr-10" data-toggle="tooltip" data-original-title="ajouter">
+                          <i class="ti-plus"></i>
+                        </a> 
+                      </div>
+                          
+                        </div>
+                    
+              
+             
+              
+                 
+                      
+                    </div>
+                  </div>
+                  </form>
+              
+                    
+                    <!-- /.tab-pane -->
+                    <!-- Settings tab content -->
+                 
+             
+                    <!-- End Question 13 -->
+                    </div>
+                  </div>
+                  <!-- End Categroy 4 -->						
+                </div>
+
+                   
                   
                 </div>
             </div>
             <!-- /.box-body -->
           </div>
+          
           <!-- /.box -->
         </div>  
       </div>
@@ -162,7 +261,7 @@
     </section>
     <!-- /.content -->	  
  
- 
+   <!-- /.modal  1-->
     <div id="myModal" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
       <div class="modal-dialog">
           <div class="modal-content">
@@ -194,6 +293,35 @@
       <!-- /.modal-dialog -->
   </div>
    
-    <!-- /.modal -->
-
+    <!-- /.modal 2 -->
+    <div id="myModall" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h4 class="modal-title" id="myModalLabel">Edit  Theme </h4>
+                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+              </div>
+              <div class="modal-body">
+                  <form class="form-horizontal" #updateform="ngForm" [formGroup]="formTheme"  >
+                      <div class="form-group">
+                          <label class="col-md-12">Theme</label>
+                          <div class="col-md-12">
+                  <input type="text" class="form-control" placeholder=""   formControlName="theme_titre">
+                          </div>
+                         
+                        
+                      </div>
+                      
+                      <div class="modal-footer">
+                          <button type="button" class="btn btn-success" data-dismiss="modal"  (click)="EditTheme()" >Edit</button>
+                          <button type="button" class="btn btn-default float-right" data-dismiss="modal">Cancel</button>
+                      </div>
+                  </form>
+              </div>
+             
+          </div>
+          <!-- /.modal-content -->
+      </div>
+      <!-- /.modal-dialog -->
+  </div>
 <!-- /.content-wrapper -->
