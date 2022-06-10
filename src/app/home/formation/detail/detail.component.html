@@ -1,4 +1,4 @@
-  <!-- Content Wrapper. Contains page content -->
+ 
 
       <!-- Content Header (Page header) -->	  
       <div class="content-header">
@@ -101,154 +101,183 @@
                     <button type="button" data-toggle="modal" data-target="#myModal"  class="waves-effect waves-light btn btn-rounded btn-primary-light mb-5" > <i class="ti-plus"></i> Primary</button>
                     <br><br>
                       <!-- Categroy 2 -->
-                      <div id="accordion" *ngFor="let item of theme">
-                        <div class="card" >
-                          <div class="bg-secondary-light ">
-                          <div class="card-header" id="headingOne"  >
-                            <h5 class="mb-0"> 						<i class="fa fa-bookmark-o" aria-hidden="true"></i> 
-
-
-                              <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                {{item.theme_titre}}
-                              </button>
-                            </h5>
-                            <div class="btn-group">
-                              <a  style="text-align:left"   type="button" data-toggle="dropdown"> <i style="font-size:24px" class="fa">&#xf142;</i></a>
-                              <div class="dropdown-menu">
-                              <a class="dropdown-item" (click)="getThemeById(item.id)" data-toggle="modal" data-target="#myModall" >Renommer</a>
-                              <a class="dropdown-item" (click)="removeTheme(item.id)">Supprimer</a>
-                              </div>
-
-
-                            </div>
-                        <!-- <a style="text-align:left"  [routerLink]="['/home/steps']"> <i style="font-size:24px" class="fa">&#xf142;</i>
-
-                              </a> -->
-
-                          </div>
-                        </div>
-                      
-                          <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
-                            <div class="card-body">
-                              <div class=" tab-pane animation-fade active" id="category-1" role="tabpanel">
-                                <div class="panel-group panel-group-simple panel-group-continuous" id="accordion2"
-                                aria-multiselectable="true" role="tablist">
-                                <!-- Question 1 -->
-                                <div class="panel">
-                                  <div class="panel-heading" id="question-1" role="tab">
-                                  <a class="panel-title" aria-controls="answer-1" aria-expanded="true" data-toggle="collapse"
-                                  href="#answer-1" data-parent="#accordion2">
-                                  Lorem ipsum dolor sit amet, consectetur adipiscing elit?
-                                  </a>
-                                  </div>
-                                  <div class="panel-collapse collapse show" id="answer-1" aria-labelledby="question-1"
-                                  role="tabpanel">
-                                  <div class="panel-body">
-                                    I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? But who has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain that produces no resultant pleasure?
-                                  </div>
-                                  </div>
-                                </div>
-                                <div class="panel">
-                                  <div class="panel-heading" id="question-1" role="tab">
-                                  <a class="panel-title" aria-controls="answer-1" aria-expanded="true" data-toggle="collapse"
-                                  href="#answer-1" data-parent="#accordion2">
-                                  Lorem ipsum dolor sit amet, consectetur adipiscing elit?
-                                  </a>
-                                  </div>
-                                  <div class="panel-collapse collapse show" id="answer-1" aria-labelledby="question-1"
-                                  role="tabpanel">
-                                  <div class="panel-body">
-                                    I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? But who has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain that produces no resultant pleasure?
-                                  </div>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          
-                            </div>
-                           
-
-                          </div>
-                          <div class="bg-secondary-light ">
-                          <div style="text-align:right" class="card-footer" id="headingOne">
-                            <a [routerLink]="['/home/theme',item.id]">dddddddddd</a>
-                          </div>
-                        </div>
-                      </div>
-                      
-                      </div>
-                      
                      
+                     
+                  
+                      <div class="col-md-10">
+                        <div class="box bl-3 border-primary"  *ngFor="let item of theme">
+                          
+                          <div class="box-header"> <i class="fa fa-bookmark-o" aria-hidden="true"></i> 
+                          <h4 class="box-title"> {{item.theme_titre}}</h4>
+                        <div  style="text-align:right">
+                          <div class="btn-group" >
+                            <a    type="button" data-toggle="dropdown"> <i style="font-size:24px" class="fa">&#xf142;</i></a>
+                            <div class="dropdown-menu">
+                            <a class="dropdown-item" (click)="getThemeById(item.id)" data-toggle="modal" data-target="#myModall" >Renommer</a>
+                            <a class="dropdown-item" (click)="removeTheme(item.id)">Supprimer</a>
+                            </div>
+
+
+                          </div>
+                        </div>
+                        </div>
+                
+                          <div class="box-body" >
+                            <mat-accordion>
+                             
+                              <mat-expansion-panel (opened)="panelOpenState = true"
+                                                   (closed)="panelOpenState = false">
+                                <mat-expansion-panel-header  *ngFor="let rol of item.etapes" >
+                                  <mat-panel-title >
+                                    {{rol.description}}
+                                  </mat-panel-title>
+                                  <mat-panel-description>
+                                    
+                                  </mat-panel-description>
+                                </mat-expansion-panel-header>
+                              
+                              </mat-expansion-panel>
+                            </mat-accordion>
+                            
+                          </div>
+                          <div class="footer">
+
+                           <h5   style="text-align:right">
+                            <a [routerLink]="['/home/theme',item.id]">More Details</a>
+                            
+                          </h5>
+                          </div>
+                        </div>
+                        </div>
+
                       <!-- End Categroy 2 -->						
                   </div>
               
                  
 
                 <div id="navpills-4" class="tab-pane">
-                  <!-- Categroy 4 -->
-                  <div class="tab-pane animation-fade" id="category-4" role="tabpanel">
-                    <div class="panel-group panel-group-simple panel-group-continuous" id="accordion3"
-                    aria-multiselectable="true" role="tablist">
-                    <!-- Question 11 -->
-                    <form >
-                    <div class="tab-pane active" id="control-sidebar-home-tab">
-                        <div class="flexbox">
-                          
-                    <a href="javascript:void(0)" class="text-grey">
-                      <i class="ti-more"></i>
-                    </a>	
-                    <p>Users</p>
-                    <a href="javascript:void(0)" class="text-right text-grey"></a>
-                    </div>
-                 
-                    <div class="lookup lookup-sm lookup-right d-none d-lg-block" >
-                    <input type="text" name="s" placeholder="Search" class="w-p100"  [(ngModel)]="term" >
-                    </div>
-                    
-                        <div class="media-list media-list-hover mt-20" *ngFor="let userr of user | rechercheMembre:term " >
-                    <div class="media py-10 px-0"  >
-                      <a class="avatar avatar-lg status-success" href="#">
-                      <img src="{{ base_picture+userr.photo }}" alt="...">
-                      </a>
-                      <div class="media-body">
-                      <p class="font-size-16">
-                        <a class="hover-primary" href="#"><strong>{{userr.username}}</strong></a>
-                      </p>
-                     
-                        <span *ngFor="let rol of userr.roles">{{rol.name}}</span>
+                  <div class="row">
+                    <div class="col-3"></div>
+                    <div class="col-7">  <div class="tab-pane animation-fade" id="category-4" role="tabpanel">
+                      <div class="panel-group panel-group-simple panel-group-continuous" id="accordion3"
+                      aria-multiselectable="true" role="tablist">
+                      <!-- Question 11 -->
+                      <form >
+                      <div class="tab-pane active" id="control-sidebar-home-tab">
+                          <div class="flexbox">
+                            
+                      <a href="javascript:void(0)" class="text-grey">
+                       
+                      </a>	
+                      <p>Users</p>
+                      <a href="javascript:void(0)" class="text-right text-grey"></a>
                       </div>
-                      <div class="media-right gap-items">
-                        <a href="javascript:void(0)" data-toggle="modal"  class="text-info mr-10" data-toggle="tooltip" data-original-title="ajouter">
-                          <i class="ti-plus"></i>
-                        </a> 
-                      </div>
-                          
+                      <div class="lookup lookup-sm lookup-right d-none d-lg-block" >
+                        <input type="text" name="s" placeholder="Search" class="w-p100"  [(ngModel)]="term" >
                         </div>
-                    
-              
-             
-              
-                 
+                     
+                      <div *ngIf="term != '' " > 
+                          <div class="media-list media-list-hover mt-20" *ngFor="let userr of user | rechercheMembre:term "   >
+                            <div class="media py-10 px-0"  >
+                        <a class="avatar avatar-lg status-success" href="#">
+                        <img src="{{ base_picture+userr.photo }}" alt="...">
+                        </a>
+                        <div class="media-body">
+                        <p class="font-size-16">
+                          <a class="hover-primary" href="#"><strong>{{userr.username}}</strong></a>
+                        </p>
+                       
+                          <span *ngFor="let rol of userr.roles">{{rol.name}}</span>
+                        </div>
+                        <div class="media-right gap-items">
+                          <a href="javascript:void(0)"
+                           data-toggle="modal"  class="text-info mr-10" data-toggle="tooltip" data-original-title="ajouter"  (click)="addUserToFormation(userr.id)" >
+                            <i class="ti-plus"></i>
+                            
+                          </a> 
+                        </div>
+                            
+                          </div>
+
+                        
                       
+                
+               
+                        </div>
+                   
+                        
+                      </div>
                     </div>
-                  </div>
-                  </form>
-              
+                    </form>
+                
+                      
+                      <!-- /.tab-pane -->
+                      <!-- Settings tab content -->
+                   
+               
+                      <!-- End Question 13 -->
+                      </div>
+
+
                     
-                    <!-- /.tab-pane -->
-                    <!-- Settings tab content -->
-                 
-             
-                    <!-- End Question 13 -->
+                    </div>
+
+
+
+                    
+                    <!-- End Categroy 4 -->	</div>
+                    
+                  </div>
+                  
+                
+                  <br><br>
+                  <div class="row">
+                    <div class="col-md-3"></div>
+                  <div class="col-md-7">
+                    <div class="card">
+                      <div >
+
+
+                      
+                      <h4 style="text-align:center">Members</h4>
+                      <div class="media-list media-list-hover mt-20" *ngFor="let listt of listUser ">
+                        <div class="media py-10 px-0"  >
+                          <a class="avatar avatar-lg status-success" href="#">
+                            <img src="{{ base_picture+listt.users.photo }}" alt="...">
+                          </a>
+                          <div class="media-body">
+                          <p class="font-size-16">
+                            <a class="hover-primary" href="#"><strong>{{listt.users.username}}</strong></a>
+                          </p>
+                          <span *ngFor="let rol of listt.users.roles">{{rol.name}}</span>
+                          </div>
+                          <div class="media-right gap-items">
+                            <a href="javascript:void(0)"
+                             data-toggle="modal"  class="text-info mr-10" data-toggle="tooltip" data-original-title="ajouter" (click)="removeUserByDemabde(listt.id)"  > 
+                             <i class="fa fa-trash" aria-hidden="true"></i>
+                            </a> 
+                          </div>
+                        </div>
+                              
+                            </div>
+                      
+                  
+                      </div>
                     </div>
                   </div>
-                  <!-- End Categroy 4 -->						
+                  <div class="col-md-2"></div>
                 </div>
+                </div>
+                
 
                    
                   
                 </div>
+
+                
             </div>
+              
+     
             <!-- /.box-body -->
           </div>
           
@@ -325,3 +354,7 @@
       <!-- /.modal-dialog -->
   </div>
 <!-- /.content-wrapper -->
+
+  <!-- /.modal -->
+
+

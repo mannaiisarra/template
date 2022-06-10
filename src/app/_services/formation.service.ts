@@ -28,6 +28,8 @@ export class FormationService {
  updateformation(id: string, data: any): Observable<DataResponseObject<Formation>> {
    return this.http.put<DataResponseObject<Formation>>(API_URL +'/updateFormation/'+ id, data);
  }
-
+ addUserToFormation(users_id:any,data: any): Observable<DataResponseObject<Formation>> {
+  return this.http.post<DataResponseObject<Formation>>(API_URL +`/add/${users_id}`, data);
+}
 
 }

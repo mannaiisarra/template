@@ -11,16 +11,19 @@ import { Etape } from 'src/app/model/etape';
   styleUrls: ['./steps.component.css']
 })
 export class StepsComponent implements OnInit {
+  
   formStep!: FormGroup;
   etape:any ;
   etapes:any ;
- 
+  panelOpenState = false;
   id:string=this.activatedRouter.snapshot.params["id"];
   constructor(private stepService: StepsService,private fb: FormBuilder, private router:Router, private activatedRouter:ActivatedRoute) { 
     
   }
 
   ngOnInit(): void {
+
+    this.getAllNameStapes();
     
     console.log("id from activate router ",this.id) 
     this.formStep = this.fb.group({
@@ -28,6 +31,7 @@ export class StepsComponent implements OnInit {
       description: ['', [Validators.required]],
       nombre_des_heurs: ['', [Validators.required]],
       name: ['', [Validators.required]],
+      etapeType: ['', [Validators.required]],
      
 
     });
@@ -36,13 +40,14 @@ export class StepsComponent implements OnInit {
       description: '',
       nombre_des_heurs: '',
       name:'',
+      etapeType:'',
      // formation: '',       
 
   })
 
   this.getEtapeByTheme();
 
-   this. getAllNameStapes();
+ 
   }
 
   addetape(): void {
@@ -52,7 +57,7 @@ export class StepsComponent implements OnInit {
     this.stepService.addSteps(this.formStep.value,this.id).subscribe(
       data => {
         console.log(data);
-     
+        this.getEtapeByTheme();
         Swal.fire('Good job!', 'You clicked the button!', 'success');
 
       },
@@ -76,7 +81,7 @@ export class StepsComponent implements OnInit {
       this.stepService.getEtapeByTheme(this.id).subscribe(res=>{
         console.log("etape by idddd  ",res.data);
         this.etape = res.data;
-        //this.getEtapeByTheme();
+      
       
          
     
@@ -87,7 +92,7 @@ export class StepsComponent implements OnInit {
 
     getAllNameStapes(){
       this.stepService.getAllNameOfStapes().subscribe(res=>{
-        console.log("etape by nameeeeeeddd  ",res.data);
+        console.log("etape by nameeeeeeddd okk  ",res.data);
         this.etapes = res.data;
         //this.getEtapeByTheme();
       

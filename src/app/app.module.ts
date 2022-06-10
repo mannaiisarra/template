@@ -21,6 +21,17 @@ import { ClientComponent } from './home/client/client.component';
 import { EditComponent } from './home/client/edit/edit.component';
 import { ErrorComponent } from './home/error/error.component';
 import { DemandeComponent } from './home/demande/demande.component';
+import {MatExpansionModule} from '@angular/material/expansion';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatRadioModule} from "@angular/material/radio";
+
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import { QuizComponent } from './home/formation/quiz/quiz.component';
+import {MatIconModule} from "@angular/material/icon";
+import {MatFormFieldModule} from "@angular/material/form-field";
+import { CoursComponent } from './home/formation/cours/cours.component';
+import { PlanificationComponent } from './home/planification/planification.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,18 +46,28 @@ import { DemandeComponent } from './home/demande/demande.component';
     DetailComponent,
     StepsComponent,
     RechercheMembrePipe,
+    
 
     ClientComponent,
      EditComponent,
      ErrorComponent,
-     DemandeComponent
+     DemandeComponent,
+     QuizComponent,
+     CoursComponent,
+     PlanificationComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    MatExpansionModule,
+    MatRadioModule,
+    MatIconModule,
+    MatSlideToggleModule,
+ 
+    BrowserAnimationsModule
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent]

@@ -13,6 +13,8 @@ import { ClientComponent } from './home/client/client.component';
 import { EditComponent } from './home/client/edit/edit.component';
 import { ErrorComponent } from './home/error/error.component';
 import { DemandeComponent } from './home/demande/demande.component';
+import { QuizComponent } from './home/formation/quiz/quiz.component';
+import { PlanificationComponent } from './home/planification/planification.component';
 const routes: Routes = [
     {path:"login",component:LoginComponent},
     
@@ -28,6 +30,8 @@ const routes: Routes = [
           {path:"listclient",component:ClientComponent},
           {path:"editUser/:id",component:EditComponent},
          {path:"AddComponent",component:AddComponent},
+         {path:"quiz",component:QuizComponent},
+         {path:"planification",component:PlanificationComponent},
          {path:"listOfRequest",component:DemandeComponent}
 
        

@@ -8,7 +8,7 @@
         
          
 				  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-center"> <i class="fa fa-plus mr-9"></i>
-				
+
 				  </button>
 
         </div>
@@ -25,7 +25,67 @@
             <h4 class="box-title">Tasks Overview <small class="subtitle">Pending 10 tasks</small></h4>
            
           </div>
+          <div  *ngFor="let item of etape">
+          <div class="box-body">
+          
+            <mat-accordion>
+              
+             
+              <mat-expansion-panel (opened)="panelOpenState = true"
+                                   (closed)="panelOpenState = false">
+                                   
+                <mat-expansion-panel-header>
+                  <mat-panel-title>
+                    {{item.step_titre}}
+                  </mat-panel-title>
+                  <mat-panel-description>
+                    Currently I am {{panelOpenState ? 'open' : 'closed'}}
+                  </mat-panel-description>
+                </mat-expansion-panel-header>
+
          
+<form *ngIf="item.etapeType == 'QUIZ'" >
+<div class="row">
+here QUIZ
+  <div class="box">
+
+    <div class="box-body form-element" >
+      <input class="form-control input-lg" type="text" placeholder="Little Texte ..">
+      
+      
+    </div>
+    <!-- /.box-body -->
+    </div>
+
+    <div class="box" >
+      <div class="box-body form-element"  >
+      <div class="fallback" class="dropzone">
+        <input name="file" type="file" multiple />
+      </div>
+    </div>
+    <div class="col-md-12 col-6">
+      
+      <button style="text-align:left" type="button" class="waves-effect waves-light btn mb-5 bg-gradient-success">success </button>
+    </div>
+    
+
+      <!-- /.box-body -->
+      </div>
+    </div>
+</form>
+
+<form *ngIf="item.etapeType == 'COUR'" >
+  
+  </form>
+
+
+
+              </mat-expansion-panel>
+              
+            </mat-accordion>
+            
+          </div>
+        </div>
         </div>
      
       <!-- /.box -->
@@ -64,8 +124,9 @@
               <div class="col-md-12">
               <div class="form-group" >
                 <label>Interested in</label>
-                <select class="form-control"  formControlName="name">
-                <option  *ngFor="let item of etapes" [value]="item.id">{{item.name}}</option>
+                <select class="form-control"  formControlName="etapeType">
+                <option value='QUIZ' >QUIZ</option>
+                <option  value='COUR'>COURS</option>
                 
                
                 </select>

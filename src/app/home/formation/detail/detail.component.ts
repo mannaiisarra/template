@@ -8,8 +8,10 @@ import { Theme } from 'src/app/model/theme';
 import { DatePipe } from '@angular/common';
 import { UserService } from 'src/app/_services/user.service';
 import { AuthService } from 'src/app/_services/auth.service';
+import { StepsService } from 'src/app/_services/steps.service';
 
 import { environment } from 'src/environments/environment.prod';
+import { DemandeService } from 'src/app/_services/demande.service';
 
 
 @Component({
@@ -19,9 +21,11 @@ import { environment } from 'src/environments/environment.prod';
 })
 export class DetailComponent implements OnInit {
   formFormation!: FormGroup;
+  formuserToFormation!: FormGroup;
   formTheme!: FormGroup;
   formEmail!: FormGroup;
   term:string="";
+  listUser:any;
   
   base_picture=environment.base_picture;
   fileToUpload: File | null = null;
@@ -30,14 +34,14 @@ export class DetailComponent implements OnInit {
   photo:any;
   user:any
   id:string=this.activatedRouter.snapshot.params["id"];
+  step = 0;
+  demande:any
+  panelOpenState = false;
 
-   
-
-
-  constructor(private fb: FormBuilder, private router:Router, private activatedRouter:ActivatedRoute,private formationService: FormationService,private themeService: ThemeService,private datePipe:DatePipe,private userService:UserService,private authService:AuthService ) {  }
+  constructor(private fb: FormBuilder, private router:Router, private activatedRouter:ActivatedRoute,private formationService: FormationService,private themeService: ThemeService,private datePipe:DatePipe,private userService:UserService,private authService:AuthService ,private demandeService:DemandeService,private stepsService:StepsService ) {  }
 
   ngOnInit(): void {
-this.search();
+
     console.log("id from activate router ",this.id) 
 
 
@@ -83,8 +87,12 @@ this.search();
 this.getThemeByFormationn();
 
 
+this.search();
 
   }
+
+
+  
 
   /**************************************************End ngOnInit **************************************************************/
 /************ get theme by id **********/
@@ -176,16 +184,23 @@ getThemeById(id:any){
     }
     getThemeByFormationn(){
       this.themeService.getThemeByFormation(this.id).subscribe(res=>{
-    console.log(" data ",res.data);
+     
+    console.log(" Get Theme By Formation ",res.data);
     this.theme = res.data;
    
    
-    
+    // this.stepsService.getEtapeByTheme(this.theme.id).subscribe(tes=>{
+    //   console.log(" etape by theme ",tes.data);
+  
+  
+    // })
 
 
 })
 }
   /********** end Ajouter theme ************/
+
+ 
 
     /********** delate theme By id ************/
 removeTheme(id:any){
@@ -237,19 +252,44 @@ EditTheme() {
  /********** END  update theme By id ************/
 
 
- search(): void {
+  search(): void {
   //const formdata = new FormData();
   //formdata.append("email", this.formEmail.get('email')!.value);
     
   this.userService.getAll().subscribe(
-    res => {
-      console.log(res.data);
-    this.user=res.data
+    resAllUser => {
+      console.log("ddddddddddddddddddddddddddddddddza",resAllUser.data);
+    this.user=resAllUser.data
+
     this.user= this.user.filter(item =>
       {
-        return item.roles[0].name!== "ADMIN" &&   item.roles[0].name!== "SUPADMIN";
+        return item.roles[0].name!== "ADMIN" &&   item.roles[0].name!== "SUPADMIN" && item.roles[0].name!== "FORMATEUR";
       }
       );
+      // this.user= this.user.filter(item =>
+      //   {
+      //     array1.forEach(element => console.log(element));
+
+      //   }
+      //   );
+      this.demandeService.getActive(this.id).subscribe(
+        res => {
+          console.log(res.data);
+          this.listUser=res.data;  
+          console.log("list user deja ajouter : ",this.listUser);     
+            this.listUser.forEach(element =>{
+    
+              console.log("user ajouter is ",element.users.id);
+              console.log("user all is ",this.user);
+    
+              this.user = this.user.filter( item=>{
+                console.log("filtre condition ",item.id !== element.users.id);
+                return item.id !== element.users.id  ;
+                 })              
+            } )  
+          }
+          
+          )
     
 
     },
@@ -258,9 +298,116 @@ EditTheme() {
     
    
    );
+
+  
   
   }
+  /*
+  listOfUsersAjouter() {
+  
+      
+    this.demandeService.getformationAjouter(this.id).subscribe(
+      res => {
+        console.log(res.data);
+        this.listUser=res.data;
 
+        console.log("list user deja ajouter : ",this.listUser);
+
+        console.log("")
+
+        //this.listAprenantDejaParticipe.foreach(element => this.listUser.filter(item => return item.users.id !== element.id))
+  
+          this.listUser.forEach(element =>{
+            console.log("user ajouter is ",element.users.id);
+
+            this.listUser.filter( item=>{
+              console.log("itemmm here",item);
+              return  item.users.id !== element.users.id
+               })
+            
+          }         
+           
+            
+
+          )
+   
+      
+      
+          
+    
+    
+  
+  
+        }
+        
+        )}
+  
+  
+
+*/
+
+addUserToFormation(users_id:any): void {
+
+  this.formuserToFormation = this.fb.group({
+    active: ['True', [Validators.required]], 
+    date_de_demande: ['', [Validators.required]],  
+    //formation: [this.id, [Validators.required]],
+  });
+  this.formTheme.patchValue({
+    active: 'True',
+    date_de_demande: '',       
+
+})
+
+    
+  this.demandeService.addDemande(this.formuserToFormation.value,this.id,users_id).subscribe(
+    data => {
+      console.log(data);
+      this.search();
+      Swal.fire('Good job!', 'You clicked the button!', 'success');
+
+    },
+    err => {
+    
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Something went wrong!',
+        footer: '<a href="">Why do I have this issue?</a>',
+      });
+    }
+    
+    
+   
+   );
+ 
  
   
+}
+
+removeUserByDemabde(id:any){
+  console.log(" Product deleted", id)
+  Swal.fire({
+    title: 'Are you sure?',
+    text: "You won't be able to revert this!",
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Yes, delete it!',
+  }).then((result) => {
+    if (result.isConfirmed) {
+      this.demandeService.removeDemande(id).subscribe((item) => {
+        this.search() ;
+        console.log('item remove', item);
+        
+        Swal.fire('Deleted!', 'User has been deleted.', 'success');
+      });
+    }
+  });
+}
+
+
+
+
 }
